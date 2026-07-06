@@ -1,9 +1,20 @@
+import sys
+import os
 from flask import Flask, render_template, jsonify, request
 from weather_analysis.weather_cn_api import get_weather_all, search_city, get_city_list
 from weather_analysis.mock_data import generate_mock_weather_all, search_city_mock
 from weather_analysis.analyzer import get_full_analysis
 
-app = Flask(__name__)
+# 兼容PyInstaller打包后的路径
+if getattr(sys, 'frozen', False):
+    # 打包后的exe运行环境
+    base_dir = sys._MEIPASS
+else:
+    # 开发环境
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+
+template_dir = os.path.join(base_dir, 'templates')
+app = Flask(__name__, template_folder=template_dir)
 
 
 @app.route('/')
