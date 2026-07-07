@@ -103,7 +103,3 @@ GET /api/search?keyword=关键词
 - **实时天气数据**: Open-Meteo API (https://open-meteo.com)
 - **数据更新频率**: 每小时更新
 - **访问方式**: 免费、无需 API Key
-
-## 许可证
-
-MIT License
